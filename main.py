@@ -43,7 +43,7 @@ if __name__ == "__main__":
     input_slot3 = InputSlot(name="3", capacity=100, unit="ml")
     input_slot4 = InputSlot(name="4", capacity=100, unit="ml")
     input_slot5 = InputSlot(name="5", capacity=100, unit="ml")
-    coffee_machine = CoffeeMachine(max_slots=5, input_slots=[input_slot1, input_slot2, input_slot3, input_slot4, input_slot5])
+    coffee_machine = CoffeeMachine(max_slots=5, output_slots=3, input_slots=[input_slot1, input_slot2, input_slot3, input_slot4, input_slot5])
 
     ingredient1 = Item(name="hot_water", filled=500, input_slot=input_slot1)
     ingredient2 = Item(name="hot_milk", filled=500, input_slot=input_slot2)

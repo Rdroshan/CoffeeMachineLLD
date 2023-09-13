@@ -9,12 +9,13 @@ lock = Lock()
 
 
 class CoffeeMachine:
-    def __init__(self, max_slots: int, input_slots: List[InputSlot]):
+    def __init__(self, max_slots: int, output_slots:int, input_slots: List[InputSlot]):
         self.max_slots = max_slots
         self.__validate_input_slots(input_slots)
         self.input_slots = input_slots
         self.item_slot_mapping = {}
         self.beverages_ingredients_mapping = {}
+        self.output_slots = output_slots
 
     def __validate_input_slots(self, input_slots):
         # all the input slots are present
@@ -50,6 +51,8 @@ class CoffeeMachine:
         if error_for_req_cap:
             raise Exception(f"Requirements {error_for_req_cap[0]}, {error_for_req_cap[1]} can't be met by the machine, allowed: {error_for_req_cap[2]}!!")
 
+        if len(self.beverages_ingredients_mapping.keys()) + 1> self.output_slots:
+            raise Exception(f"Only {self.output_slots} many beverages allowed!!!")
         self.beverages_ingredients_mapping[beverage.name] = beverage
 
     def __check_ingredients_available(self, beverage):
