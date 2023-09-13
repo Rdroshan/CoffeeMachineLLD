@@ -19,9 +19,13 @@ So ingredients check + collecting ingredients = critical section
 
 
 Assumptions:
+0. I'm initialising the coffee machine with items which are alloted to the input slots coffee machine have.
+So if we're adding a beverage which doesn't have the required items in the coffee machine,
+IT'LL NOT ALLOW TO ADD THE BEVERAGE CONFIGURATION TO THE MACHINE.
 1. Not giving edit option i.e. a added item to the coffee can't be edited
 2. An added beverage can't be edited
 3. One item to one slot
+4. More items can't be allotted once we have initialised coffee machine.
 4. All ingredients are liquids and hence unit of capacity is in ml.
 """
 
