@@ -140,17 +140,19 @@ if __name__ == "__main__":
     # Expectation: should throw error for the user when ingredient is running low
     from threading import Thread
     threads = []
-    threads.append(Thread(target=coffee_machine.request_beverage("hot_tea")))
-    threads.append(Thread(target=coffee_machine.request_beverage("hot_tea")))
-    threads.append(Thread(target=coffee_machine.request_beverage("hot_tea")))
+    coffee_machine.check_items_current_capacity()
+    threads.append(Thread(target=coffee_machine.request_beverage, args=("hot_tea", )))
+    threads.append(Thread(target=coffee_machine.request_beverage, args=("hot_tea", )))
+    threads.append(Thread(target=coffee_machine.request_beverage, args=("hot_tea", )))
+    threads.append(Thread(target=coffee_machine.request_beverage, args=("hot_tea", )))
 
     for t in threads:
         try:
             t.start()
         except Exception as e:
             print(e)
-    # for t in threads:
-    #     t.join()
+    for t in threads:
+        t.join()
 
     coffee_machine.check_items_current_capacity()
 
